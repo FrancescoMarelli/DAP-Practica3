@@ -1,0 +1,58 @@
+@startuml
+class Framework.MatrixMultiplySol {
+~ ArrayList<ArrayList<Integer>> matrixC
++ ArrayList<ArrayList<Integer>> getMatrixSol()
++ String toString()
+}
+interface Framework.Solution {
+}
+class Framework.MatrixMultiplyProb {
+~ ArrayList<ArrayList<Integer>> matrixA
+~ ArrayList<ArrayList<Integer>> matrixB
++ ArrayList<ArrayList<Integer>> getMatrixA()
++ ArrayList<ArrayList<Integer>> getMatrixB()
+}
+class Framework.BinSortProb {
+- ArrayList<Integer> disorderedArr
++ ArrayList<Integer> getDisorderedArr()
+}
+class Framework.MatrixMultiplyDC {
+# boolean isSimple(Problem)
+# Solution simplySolve(Problem)
+# Problem[] decompose(Problem)
+# Solution combine(Problem,Solution[])
+}
+abstract class Framework.DivConqTemplate {
++ Solution solve(Problem)
+# {abstract}boolean isSimple(Problem)
+# {abstract}Solution simplySolve(Problem)
+# {abstract}Problem[] decompose(Problem)
+# {abstract}Solution combine(Problem,Solution[])
+}
+interface Framework.Problem {
+}
+class Framework.BinSortDC {
+- int LEFT
+- int RIGHT
+# boolean isSimple(Problem)
+# Solution simplySolve(Problem)
+# Problem[] decompose(Problem)
+# Solution combine(Problem,Solution[])
+}
+class Framework.BinSortSol {
+- ArrayList<Integer> orderedArr
++ ArrayList<Integer> getOrderedArr()
++ String toString()
+}
+class Framework.BuildMatrix {
++ ArrayList<ArrayList<Integer>> BuildMatrix()
+}
+
+
+Framework.Solution <|.. Framework.MatrixMultiplySol
+Framework.Problem <|.. Framework.MatrixMultiplyProb
+Framework.Problem <|.. Framework.BinSortProb
+Framework.DivConqTemplate <|-- Framework.MatrixMultiplyDC
+Framework.DivConqTemplate <|-- Framework.BinSortDC
+Framework.Solution <|.. Framework.BinSortSol
+@enduml

@@ -1,0 +1,69 @@
+@startuml
+class Main {
+~ {static} int BINSORT
+~ {static} int MATRIXMULTIPLY
++ {static} void main(String[])
+}
+class Framework.BinSortProb {
+- ArrayList<Integer> disorderedArr
++ ArrayList<Integer> getDisorderedArr()
+}
+class Framework.MatrixMultiplyDC {
+# boolean isSimple(Problem)
+# Solution simplySolve(Problem)
+# Problem[] decompose(Problem)
+# Solution combine(Problem,Solution[])
+}
+abstract class Framework.DivConqTemplate {
++ Solution solve(Problem)
+# {abstract}boolean isSimple(Problem)
+# {abstract}Solution simplySolve(Problem)
+# {abstract}Problem[] decompose(Problem)
+# {abstract}Solution combine(Problem,Solution[])
+}
+interface Framework.Problem {
+}
+class Framework.BinSortSol {
+- ArrayList<Integer> orderedArr
++ ArrayList<Integer> getOrderedArr()
++ String toString()
+}
+class MainTestBin {
++ {static} void main(String[])
+}
+class Framework.MatrixMultiplySol {
+~ ArrayList<ArrayList<Integer>> matrixC
++ ArrayList<ArrayList<Integer>> getMatrixSol()
++ String toString()
+}
+class Framework.MatrixMultiplyProb {
+~ ArrayList<ArrayList<Integer>> matrixA
+~ ArrayList<ArrayList<Integer>> matrixB
++ ArrayList<ArrayList<Integer>> getMatrixA()
++ ArrayList<ArrayList<Integer>> getMatrixB()
+}
+interface Framework.Solution {
+}
+class MainTestMM {
++ {static} void main(String[])
+}
+class Framework.BinSortDC {
+- int LEFT
+- int RIGHT
+# boolean isSimple(Problem)
+# Solution simplySolve(Problem)
+# Problem[] decompose(Problem)
+# Solution combine(Problem,Solution[])
+}
+class Framework.BuildMatrix {
++ ArrayList<ArrayList<Integer>> BuildMatrix()
+}
+
+
+Framework.Problem <|.. Framework.BinSortProb
+Framework.DivConqTemplate <|-- Framework.MatrixMultiplyDC
+Framework.Solution <|.. Framework.BinSortSol
+Framework.Solution <|.. Framework.MatrixMultiplySol
+Framework.Problem <|.. Framework.MatrixMultiplyProb
+Framework.DivConqTemplate <|-- Framework.BinSortDC
+@enduml
